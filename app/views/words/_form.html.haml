@@ -1,0 +1,22 @@
+= form_for @word, :html=>{:class=>"form-horizontal"} do |f|
+  - if @word.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@word.errors.count, "error")} prohibited this word from being saved:"
+      %ul
+        - @word.errors.full_messages.each do |msg|
+          %li= msg
+
+  .form-group
+    = f.label "正确词语", :class=>"col-md-2 control-label"
+    .col-md-3
+      = f.text_field :right, :class=>"form-control"
+
+  .form-group
+    = f.label "错误词语", :class=>"col-md-2 control-label"
+    .col-md-3
+      = f.text_field :wrong, :class=>"form-control"
+
+  .form-group
+    .col-md-3.col-md-offset-2
+      = f.submit '保存', :class=>"btn btn-success"
+      = link_to '返回', words_path, :class=>"btn btn-default"

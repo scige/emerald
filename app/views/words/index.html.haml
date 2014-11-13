@@ -1,0 +1,21 @@
+%h2 全部词语
+
+.row
+  .col-md-9
+    %table.table.table-hover
+      %tr
+        %th 正确词语
+        %th 错误词语
+        %th
+        %th
+        %th
+    
+      - @words.each do |word|
+        %tr
+          %td= word.right
+          %td= word.wrong
+          %td= link_to '查看', word, :class=>"btn btn-default"
+          %td= link_to '编辑', edit_word_path(word), :class=>"btn btn-primary"
+          %td= link_to '删除', word, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class=>"btn btn-danger"
+
+= link_to '新建词语', new_word_path, :class=>"btn btn-info"

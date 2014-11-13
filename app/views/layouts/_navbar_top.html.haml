@@ -6,9 +6,9 @@
   = link_to "官方网站", root_path, :class=>"navbar-brand"
 .collapse.navbar-collapse
   %ul.nav.navbar-nav
-    %li.active= link_to "首页", root_path
-    %li= link_to "项目1", root_path
-    %li= link_to "项目2", root_path
+    %li{:class => (controller_name=="home"?"active":nil)}= link_to "首页", root_path
+    %li{:class => (controller_name=="articles"?"active":nil)}= link_to "拼写纠错", articles_path
+    %li{:class => (controller_name=="words"?"active":nil)}= link_to "词语管理", words_path
   %ul.nav.navbar-nav.navbar-right
     - if user_signed_in?
       %li.dropdown

@@ -1,0 +1,19 @@
+%h2 全部文章
+
+.row
+  .col-md-9
+    %table.table.table-hover
+      %tr
+        %th 内容
+        %th
+        %th
+        %th
+    
+      - @articles.each do |article|
+        %tr
+          %td= article.content
+          %td= link_to 'Show', article, :class=>"btn btn-default"
+          %td= link_to 'Edit', edit_article_path(article), :class=>"btn btn-primary"
+          %td= link_to 'Destroy', article, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class=>"btn btn-danger"
+
+= link_to '新建文章', new_article_path, :class=>"btn btn-info"
