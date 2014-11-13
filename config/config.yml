@@ -1,0 +1,15 @@
+defaults: &defaults
+  users:
+    status_normal: 1
+    status_banned: 2
+    status_normal_string: 正常
+    status_banned_string: 禁止
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
