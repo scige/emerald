@@ -3,10 +3,18 @@
 = form_for @article, :html=>{:role=>"form"} do |f|
   .form-group
     .col-md-8.col-md-offset-1
-      = f.label "输入文字", :class=>"col-md-2 control-label"
-      = f.text_area :content, :class=>"form-control", :disabled=>"disabled"
+      = f.label "纠错结果", :class=>"col-md-2 control-label"
+      .input-block
+        = format_highlight(@article.content, @result).html_safe
+
+  .form-group
+    .col-md-8.col-md-offset-1
+      = f.label "纠错建议", :class=>"col-md-2 control-label"
+      .advise-block
+        = format_advise(@result).html_safe
 
   .form-group
     .col-md-8.col-md-offset-1
       = link_to '编辑', edit_article_path(@article), :class=>"btn btn-primary"
       = link_to '返回', articles_path, :class=>"btn btn-default"
+
